@@ -1,0 +1,43 @@
+#Nearby mirror
+#MASTER_SITE_OVERRIDE="ftp://ftp.at.freebsd.org/pub/FreeBSD/ports/distfiles/"
+#MASTER_SITE_OVERRIDE="ftp://ftp.de.freebsd.org/pub/FreeBSD/ports/distfiles/"
+ 
+#Build
+MAKE_JOBS_NUMBER?=4
+ 
+#Optimizations (recompile all -> portmaster -adf)
+#CPUTYPE?=native
+OPTIONS_SET=OPTIMIZED_CFLAGS OPTIMIZED CPUFLAGS CPU_OPTS
+ 
+#Server options NoX
+OPTIONS_SET+=ICONV
+OPTIONS_UNSET=CUPS DEBUG DOCS FONTCONFIG NLS X11 SOUND NTFS LINUX DTRACE EXAMPLES
+WITHOUT_MODULES=sound ntfs linux
+
+#NO_SENDMAIL=true
+ 
+#OpenSSL from Ports
+#DEFAULT_VERSIONS+=ssl=openssl
+# iRedMail-WANT_OPENLDAP_VER
+WANT_OPENLDAP_VER=24
+# iRedMail-WANT_MYSQL
+WANT_MYSQL=57
+# iRedMail-WANT_PGSQL_VER
+WANT_PGSQL_VER=95
+# iRedMail-APACHE_PORT
+APACHE_PORT=www/apache24
+# iRedMail-WANT_BDB_VER
+WANT_BDB_VER=5
+# iRedMail-DEFAULT_VERSIONS
+DEFAULT_VERSIONS+=ssl=openssl python=2.7 python2=2.7 apache=2.4 pgsql=9.5 php=7.3 perl5=5.26
+#DEFAULT_VERSIONS=ssl=libressl python=2.7 python2=2.7 apache=2.4 pgsql=9.5 php=7.3
+# iRedMail-OPTIONS_SET-SASL
+OPTIONS_SET+=SASL
+# iRedMail-OPTIONS_UNSET-X11
+OPTIONS_UNSET+=X11
+# iRedMail-LICENSES_ACCEPTED-NONE
+LICENSES_ACCEPTED+=NONE
+
+# >FreeBSD11 just use that
+WITH_CCACHE_BUILD=yes
+CCACHE_DIR=/root/.ccache
