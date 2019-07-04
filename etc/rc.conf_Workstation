@@ -1,0 +1,58 @@
+clear_tmp_enable="YES"
+syslogd_flags="-ss"
+sendmail_enable="NONE"
+hostname="hyperion"
+#ifconfig_em0="DHCP"
+#ifconfig_em0="192.168.1.33/24"
+local_unbound_enable="YES"
+sshd_enable="NO"
+ntpd_enable="YES"
+# Let ntpd make time jumps larger than 1000sec
+ntpd_flags="-g"
+powerd_enable="YES"
+#From https://wiki.freebsd.org/TuningPowerConsumption#Intel_GPUs
+#powerd_flags="-a maximum -b adaptive -i 85 -r 60 -p 100"
+powerd_flags="-a hiadaptive -b adaptive"
+performance_cx_lowest="Cmax"
+economy_cx_lowest="Cmax"
+# Set dumpdev to "AUTO" to enable crash dumps, "NO" to disable
+dumpdev="NO"
+zfs_enable="YES"
+
+#Firewall pf
+#pf_enable="YES"
+#pf_flags=""
+#pf_rules="/etc/pf.conf"
+#pflog_enable="NO"
+#pflog_logfile="/var/log/pflog"  # where pflogd should store the logfile
+#pflog_flags=""                  # additional flags for pflogd startup
+
+wpa_supplicant_enable="YES"
+wlans_iwm0="wlan0"
+ifconfig_wlan0="-ht WPA SYNCDHCP"
+ifconfig_wlan0_ipv6="inet6 DHCP accept_rtadv"
+#create_args_wlan0="country CH"
+#create_args_wlan0="country ES regdomain FCC4"
+rtsold_enable="YES"
+rtsold_flags="-aF"
+
+kld_list="/boot/modules/i915kms.ko"
+
+linux_enable="YES"
+hald_enable="YES"
+dbus_enable="YES"
+
+#for vm-bhyve sysutils/vm-bhyve
+#vm_enable="YES"
+#vm_dir="/usr/home/gsp/BhyveVM"
+#vm_list=""
+#vm_delay="5"
+
+#tor_enable="YES"
+#bsdstats_enable="YES"
+
+#Update Microcode Intel
+cpupdate_enable="YES"
+nfs_reserved_port_only="NO"
+
+postgresql_enable="yes"
