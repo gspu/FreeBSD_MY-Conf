@@ -1,3 +1,7 @@
+# /etc/make.conf
+# GSPU, 2019
+#
+
 #Nearby mirror
 #MASTER_SITE_OVERRIDE="ftp://ftp.at.freebsd.org/pub/FreeBSD/ports/distfiles/"
 #MASTER_SITE_OVERRIDE="ftp://ftp.de.freebsd.org/pub/FreeBSD/ports/distfiles/"
