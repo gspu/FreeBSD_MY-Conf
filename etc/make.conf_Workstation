@@ -1,0 +1,34 @@
+# /etc/make.conf
+# GSPU, 2019
+#
+
+# Nearby mirror
+#MASTER_SITE_OVERRIDE="http://distcache.FreeBSD.org/ports-distfiles/"
+
+# Build, how many cores?
+MAKE_JOBS_NUMBER?=4
+
+# Optimizations for your central brain (NO not The Dude)
+CPUTYPE?=native
+OPTIONS_SET=OPTIMIZED_CFLAGS OPTIMIZED CPUFLAGS CPU_OPTS
+
+# Full Desktop
+OPTIONS_SET+=ICONV GPHOTO V4L NUMPY OPENMP OPENMPI NETLIB AVX AVX2 SIMD CAIRO CURL FORTRAN LARGE_STACK ALSA SNDIO
+OPTIONS_UNSET=DEBUG DOCS EXAMPLES DTRACE AVAHI BONJOUR
+#WITHOUT=sound ntfs linux
+#WITHOUT_X11=yes
+
+# Disable sendmail! Whe have no error's to send :)
+NO_SENDMAIL=true
+
+# Fresh OpenSSL from Ports, recompile your sytem with "portmaster -adf" after change it (base=from system(base))
+#DEFAULT_VERSIONS+=ssl=openssl111
+DEFAULT_VERSIONS+=ssl=base
+#DEFAULT_VERSIONS+= ssl=libressl
+
+# Other options, some fixed version's
+#DEFAULT_VERSIONS+=ruby=2.4
+
+# >FreeBSD11 just use that, grande mucho speedo compilare
+WITH_CCACHE_BUILD=yes
+CCACHE_DIR=/root/.ccache
